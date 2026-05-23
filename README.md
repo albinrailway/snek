@@ -22,6 +22,9 @@ a cozy, snake game built with **JavaFX** and **Supabase (PostgreSQL)**.
 ### player registration
 ![registration screen](images/snekregister.png)
 
+### main menu
+![main menu](images/snekmenu.png)
+
 ### cozy gameplay
 ![gameplay](images/snekgame.png)
 
@@ -32,7 +35,7 @@ a cozy, snake game built with **JavaFX** and **Supabase (PostgreSQL)**.
 
 1. **clone the repository**
    ```bash
-   git clone <your-repo-url>
+   git clone <https://github.com/albinrailway/snek>
    ```
 
 2. **configure environment variables**
@@ -44,4 +47,4 @@ a cozy, snake game built with **JavaFX** and **Supabase (PostgreSQL)**.
    ```
 
 3. **run the application**
-   start the app by running the `SnekApplication`
+   start the app by running the `SnekApplication` 
