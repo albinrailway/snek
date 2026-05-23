@@ -6,20 +6,20 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="20.0" alignment="CENTER" style="-fx-background-color: linear-gradient(to bottom right, #1A1A2E, #16213E); -fx-base: #1A1A2E; -fx-control-inner-background: #0F3460; -fx-table-cell-border-color: #16213E; -fx-selection-bar: #8E2DE2; -fx-selection-bar-text: #FFFFFF; -fx-font-family: 'Segoe UI';" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.snek.controller.HighscoreController">
+<VBox spacing="20.0" alignment="CENTER" style="-fx-background-color: #FAF5ED; -fx-base: #FAF5ED; -fx-control-inner-background: #FFFFFF; -fx-table-cell-border-color: #FAF5ED; -fx-selection-bar: #C5E0B4; -fx-selection-bar-text: #2D4A22; -fx-font-family: 'Comic Sans MS', 'Nunito', sans-serif;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.snek.controller.HighscoreController">
     <padding>
         <Insets top="30" right="60" bottom="30" left="60" />
     </padding>
 
-    <Label text="HALL OF FAME" style="-fx-font-size: 36px; -fx-font-weight: 900; -fx-text-fill: #F9A826; -fx-effect: dropshadow(gaussian, rgba(249,168,38,0.6), 15, 0.5, 0, 0);" />
+    <Label text="hall of fame 🐍" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #6E3B3D;" />
 
-    <TableView fx:id="scoreTable" VBox.vgrow="ALWAYS" style="-fx-background-radius: 15px; -fx-border-radius: 15px; -fx-border-color: #F9A826; -fx-border-width: 2px; -fx-padding: 5px;">
+    <TableView fx:id="scoreTable" VBox.vgrow="ALWAYS" style="-fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-color: #C5E0B4; -fx-border-width: 4px; -fx-padding: 5px;">
         <columns>
-            <TableColumn fx:id="playerColumn" text="PLAYER" prefWidth="330" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
-            <TableColumn fx:id="scoreColumn" text="SCORE" prefWidth="330" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-alignment: CENTER-RIGHT;" />
+            <TableColumn fx:id="playerColumn" text="player" prefWidth="330" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #4E6546;" />
+            <TableColumn fx:id="scoreColumn" text="score" prefWidth="330" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-alignment: CENTER-RIGHT; -fx-text-fill: #4E6546;" />
         </columns>
     </TableView>
 
-    <Button text="RETURN TO BASE" onAction="#handleBack" prefWidth="240"
-            style="-fx-background-color: transparent; -fx-border-color: #8A9BB4; -fx-border-radius: 30px; -fx-border-width: 2px; -fx-text-fill: #8A9BB4; -fx-background-radius: 30px; -fx-padding: 12px; -fx-font-weight: 900; -fx-font-size: 14px; -fx-cursor: hand;" />
+    <Button text="go back" onAction="#handleBack" prefWidth="220"
+            style="-fx-background-color: #E2E2E2; -fx-text-fill: #404040; -fx-background-radius: 50px; -fx-padding: 12px; -fx-font-weight: bold; -fx-font-size: 14px; -fx-cursor: hand;" />
 </VBox>

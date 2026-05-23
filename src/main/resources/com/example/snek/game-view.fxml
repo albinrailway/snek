@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="rootBox" alignment="CENTER" style="-fx-background-color: #0F0F1B; -fx-font-family: 'Segoe UI';" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.snek.controller.GameController">
-    <HBox alignment="CENTER" style="-fx-padding: 15px; -fx-background-color: #1A1A2E; -fx-border-color: #38ef7d; -fx-border-width: 0 0 2 0;">
-        <Label fx:id="scoreLabel" text="SCORE: 0" style="-fx-font-size: 28px; -fx-font-weight: 900; -fx-text-fill: #38ef7d; -fx-effect: dropshadow(gaussian, rgba(56,239,125,0.6), 15, 0.4, 0, 0); -fx-letter-spacing: 2px;" />
+<VBox fx:id="rootBox" alignment="CENTER" style="-fx-background-color: #FAF5ED; -fx-font-family: 'Comic Sans MS', 'Nunito', sans-serif;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.snek.controller.GameController">
+
+    <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-padding: 15px 30px; -fx-background-color: #FAF5ED; -fx-border-color: #C5E0B4; -fx-border-width: 0 0 4 0; -fx-border-style: dashed;">
+        <Label fx:id="scoreLabel" text="score: 0" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #7D9B76;" />
+
+        <Region HBox.hgrow="ALWAYS" />
+
+        <Button fx:id="pauseButton" text="pause" onAction="#handlePause"
+                style="-fx-background-color: #C5E0B4; -fx-text-fill: #FFFFFF; -fx-background-radius: 50px; -fx-padding: 8px 20px; -fx-font-weight: bold; -fx-font-size: 16px; -fx-cursor: hand;" />
+
+        <Button text="quit" onAction="#handleQuit"
+                style="-fx-background-color: #FFB6B9; -fx-text-fill: #FFFFFF; -fx-background-radius: 50px; -fx-padding: 8px 20px; -fx-font-weight: bold; -fx-font-size: 16px; -fx-cursor: hand;" />
     </HBox>
+
     <Canvas fx:id="gameCanvas" width="800" height="500" />
 </VBox>

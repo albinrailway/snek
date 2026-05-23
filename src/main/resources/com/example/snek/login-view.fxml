@@ -6,25 +6,25 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="18.0" alignment="CENTER" style="-fx-background-color: linear-gradient(to bottom right, #1A1A2E, #16213E); -fx-font-family: 'Segoe UI';" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.snek.controller.AuthController">
+<VBox spacing="18.0" alignment="CENTER" style="-fx-background-color: #FAF5ED; -fx-font-family: 'Comic Sans MS', 'Nunito', sans-serif;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.snek.controller.AuthController">
     <padding>
         <Insets top="40" right="40" bottom="40" left="40" />
     </padding>
 
-    <Label text="TERMINAL ACCESS" style="-fx-font-size: 32px; -fx-font-weight: 900; -fx-text-fill: #E94560; -fx-effect: dropshadow(gaussian, rgba(233,69,96,0.6), 15, 0.5, 0, 0);" />
-    <Label text="Authenticate to launch Snek." style="-fx-text-fill: #8A9BB4; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 0 0 15 0;" />
+    <Label text="snek terminal 🍵" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #4E6546;" />
+    <Label text="authenticate to play!" style="-fx-text-fill: #7D9B76; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 0 0 15 0;" />
 
-    <TextField fx:id="usernameField" promptText="Username" maxWidth="300"
-               style="-fx-background-color: #0F3460; -fx-text-fill: #FFFFFF; -fx-prompt-text-fill: #70A0D0; -fx-background-radius: 25px; -fx-padding: 14px 20px; -fx-border-color: #4FACFE; -fx-border-radius: 25px; -fx-border-width: 2px; -fx-font-size: 14px; -fx-font-weight: bold;" />
+    <TextField fx:id="usernameField" promptText="username" maxWidth="260"
+               style="-fx-background-color: #FFFFFF; -fx-text-fill: #2D4A22; -fx-prompt-text-fill: #A3B89F; -fx-background-radius: 50px; -fx-padding: 12px 20px; -fx-border-color: #C5E0B4; -fx-border-radius: 50px; -fx-border-width: 3px; -fx-font-size: 14px; -fx-font-weight: bold;" />
 
-    <PasswordField fx:id="passwordField" promptText="Password" maxWidth="300"
-                   style="-fx-background-color: #0F3460; -fx-text-fill: #FFFFFF; -fx-prompt-text-fill: #70A0D0; -fx-background-radius: 25px; -fx-padding: 14px 20px; -fx-border-color: #4FACFE; -fx-border-radius: 25px; -fx-border-width: 2px; -fx-font-size: 14px; -fx-font-weight: bold;" />
+    <PasswordField fx:id="passwordField" promptText="password" maxWidth="260"
+                   style="-fx-background-color: #FFFFFF; -fx-text-fill: #2D4A22; -fx-prompt-text-fill: #A3B89F; -fx-background-radius: 50px; -fx-padding: 12px 20px; -fx-border-color: #C5E0B4; -fx-border-radius: 50px; -fx-border-width: 3px; -fx-font-size: 14px; -fx-font-weight: bold;" />
 
-    <VBox spacing="12" alignment="CENTER" style="-fx-padding: 10 0 0 0;">
-        <Button text="LOGIN" onAction="#handleLogin" maxWidth="300"
-                style="-fx-background-color: linear-gradient(to right, #00F2FE, #4FACFE); -fx-text-fill: #FFFFFF; -fx-background-radius: 30px; -fx-padding: 14px; -fx-font-weight: 900; -fx-font-size: 16px; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(79,172,254,0.5), 15, 0.2, 0, 4);" />
+    <VBox spacing="12" alignment="CENTER" style="-fx-padding: 15 0 0 0;">
+        <Button text="login" onAction="#handleLogin" maxWidth="260"
+                style="-fx-background-color: #C5E0B4; -fx-text-fill: #2D4A22; -fx-background-radius: 50px; -fx-padding: 12px; -fx-font-weight: bold; -fx-font-size: 16px; -fx-cursor: hand;" />
 
-        <Button text="REGISTER NEW PLAYER" onAction="#handleRegister" maxWidth="300"
-                style="-fx-background-color: transparent; -fx-border-color: #4FACFE; -fx-border-radius: 30px; -fx-border-width: 2px; -fx-text-fill: #4FACFE; -fx-background-radius: 30px; -fx-padding: 12px; -fx-font-weight: 900; -fx-font-size: 14px; -fx-cursor: hand;" />
+        <Button text="register new player" onAction="#handleRegister" maxWidth="260"
+                style="-fx-background-color: transparent; -fx-border-color: #FFB6B9; -fx-border-radius: 50px; -fx-border-width: 3px; -fx-text-fill: #6E3B3D; -fx-background-radius: 50px; -fx-padding: 10px; -fx-font-weight: bold; -fx-font-size: 14px; -fx-cursor: hand;" />
     </VBox>
 </VBox>

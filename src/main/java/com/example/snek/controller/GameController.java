@@ -8,6 +8,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button; // FIXED: Added missing import
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
@@ -26,8 +27,11 @@ public class GameController {
     private Canvas gameCanvas;
     @FXML
     private Label scoreLabel;
+    @FXML
+    private Button pauseButton;
 
-    // 1. Promoted to class level to avoid lambda closure strictness
+    // FIXED: Removed duplicate declaration of gameOver from this block
+    private boolean isPaused = false;
     private GraphicsContext gc;
 
     private static final int TILE_SIZE = 20;
@@ -43,12 +47,36 @@ public class GameController {
 
     private enum Direction {UP, DOWN, LEFT, RIGHT}
 
-    private record Point(int x, int y) {
+    private record Point(int x, int y) {}
+
+    @FXML
+    private void handlePause() {
+        togglePause();
+        rootBox.requestFocus();
+    }
+
+    @FXML
+    private void handleQuit() {
+        loop.stop();
+        SceneManager.switchScene("menu-view.fxml");
+    }
+
+    private void togglePause() {
+        if (gameOver) return;
+
+        isPaused = !isPaused;
+        if (isPaused) {
+            loop.stop();
+            if (pauseButton != null) pauseButton.setText("resume");
+        } else {
+            loop.start();
+            if (pauseButton != null) pauseButton.setText("pause");
+        }
+        draw();
     }
 
     @FXML
     public void initialize() {
-        // 2. Initialize it safely here
         gc = gameCanvas.getGraphicsContext2D();
 
         snake.add(new Point(WIDTH / 2, HEIGHT / 2));
@@ -56,10 +84,16 @@ public class GameController {
 
         Platform.runLater(() -> {
             rootBox.getScene().setOnKeyPressed(event -> {
-                if (event.getCode() == KeyCode.UP && direction != Direction.DOWN) direction = Direction.UP;
-                if (event.getCode() == KeyCode.DOWN && direction != Direction.UP) direction = Direction.DOWN;
-                if (event.getCode() == KeyCode.LEFT && direction != Direction.RIGHT) direction = Direction.LEFT;
-                if (event.getCode() == KeyCode.RIGHT && direction != Direction.LEFT) direction = Direction.RIGHT;
+                if (event.getCode() == KeyCode.P) {
+                    togglePause();
+                }
+
+                if (!isPaused) {
+                    if (event.getCode() == KeyCode.UP && direction != Direction.DOWN) direction = Direction.UP;
+                    if (event.getCode() == KeyCode.DOWN && direction != Direction.UP) direction = Direction.DOWN;
+                    if (event.getCode() == KeyCode.LEFT && direction != Direction.RIGHT) direction = Direction.LEFT;
+                    if (event.getCode() == KeyCode.RIGHT && direction != Direction.LEFT) direction = Direction.RIGHT;
+                }
             });
             rootBox.requestFocus();
         });
@@ -69,7 +103,7 @@ public class GameController {
 
             public void handle(long now) {
                 if (lastTick == 0 || now - lastTick > 100_000_000) {
-                    tick(); // 3. No longer passing gc as a parameter
+                    tick();
                     lastTick = now;
                 }
             }
@@ -86,8 +120,9 @@ public class GameController {
         }
 
         Point head = snake.get(0);
-        int nextX = head.x;
-        int nextY = head.y;
+        // FIXED: Using accessor methods () for record types
+        int nextX = head.x();
+        int nextY = head.y();
 
         switch (direction) {
             case UP -> nextY--;
@@ -96,7 +131,6 @@ public class GameController {
             case RIGHT -> nextX++;
         }
 
-        // Checking collisions using the helper method to avoid lambda scope errors
         if (nextX < 0 || nextX >= WIDTH || nextY < 0 || nextY >= HEIGHT || isSnake(nextX, nextY)) {
             gameOver = true;
             return;
@@ -104,9 +138,10 @@ public class GameController {
 
         snake.add(0, new Point(nextX, nextY));
 
-        if (nextX == food.x && nextY == food.y) {
+        // FIXED: Using accessor methods () for record types
+        if (nextX == food.x() && nextY == food.y()) {
             score += 10;
-            scoreLabel.setText("Score: " + score);
+            scoreLabel.setText("score: " + score);
             spawnFood();
         } else {
             snake.remove(snake.size() - 1);
@@ -116,15 +151,29 @@ public class GameController {
     }
 
     private void draw() {
-        gc.setFill(Color.web("#1E1E1E"));
+        gc.setFill(Color.web("#FAF5ED"));
         gc.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
 
-        gc.setFill(Color.web("#D32F2F"));
-        gc.fillOval(food.x * TILE_SIZE, food.y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        gc.setFill(Color.web("#FFB6B9"));
+        gc.fillOval(food.x() * TILE_SIZE, food.y() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 
-        gc.setFill(Color.web("#1976D2"));
-        for (Point p : snake) {
-            gc.fillRect(p.x * TILE_SIZE, p.y * TILE_SIZE, TILE_SIZE - 1, TILE_SIZE - 1);
+        for (int i = 0; i < snake.size(); i++) {
+            Point p = snake.get(i);
+            if (i == 0) {
+                gc.setFill(Color.web("#A0C490"));
+            } else {
+                gc.setFill(Color.web("#C5E0B4"));
+            }
+            gc.fillOval(p.x() * TILE_SIZE, p.y() * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        }
+
+        if (isPaused) {
+            gc.setFill(Color.web("#FAF5ED", 0.7));
+            gc.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
+
+            gc.setFill(Color.web("#7D9B76"));
+            gc.setFont(javafx.scene.text.Font.font("Comic Sans MS", javafx.scene.text.FontWeight.BOLD, 40));
+            gc.fillText("paused", gameCanvas.getWidth() / 2 - 70, gameCanvas.getHeight() / 2);
         }
     }
 
@@ -139,7 +188,8 @@ public class GameController {
     }
 
     private boolean isSnake(int x, int y) {
-        return snake.stream().anyMatch(p -> p.x == x && p.y == y);
+        // FIXED: Using accessor methods () for record types
+        return snake.stream().anyMatch(p -> p.x() == x && p.y() == y);
     }
 
     private void saveScoreToSupabase(int userId, int score) {
@@ -150,7 +200,7 @@ public class GameController {
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, userId);
-            stmt.setInt(2, score); // This is the line that was cut off!
+            stmt.setInt(2, score);
             stmt.executeUpdate();
 
         } catch (Exception e) {

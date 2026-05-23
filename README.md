@@ -1,23 +1,47 @@
-# Snek 🐍
+# snek :) 🐍
 
-A modern, dark-themed Snake game built with **JavaFX** and **Supabase (PostgreSQL)**.
+a cozy, snake game built with **JavaFX** and **Supabase (PostgreSQL)**.
 
-## Features
-- **Secure Auth**: SHA-256 password hashing and session management.
-- **Modern UI**: Custom dark-material arcade interface with smooth transitions.
-- **Real-time Leaderboards**: Live database integration to track high scores.
-- **Cross-Platform**: Built for modern desktops using Java 21.
+## features
+- **bubbly aesthetic**: all lowercase letters, soft pastel color palettes, and pill-shaped, fully rounded interfaces.
+- **boba snek**: completely round snake segments drawn as overlapping ovals instead of classic retro blocks.
+- **secure auth**: sha-256 password hashing with safe local session state control.
+- **hall of fame**: real-time database pooler integration to track and render top player scores instantly.
 
-## Tech Stack
-- **Language**: Java 21 (Corretto)
-- **UI Framework**: JavaFX
-- **Database**: Supabase (PostgreSQL)
-- **Build Tool**: Maven
+## tech stack
+- **language**: java 21 (corretto)
+- **ui framework**: javafx
+- **database**: supabase (postgresql)
+- **build tool**: maven
 
-## Setup
-1. **Clone the repo**: `git clone <your-repo-url>`
-2. **Setup Env**: Create a `.env` file in the root with your Supabase credentials:
+## screenshots
+
+### entry portal
+![login screen](images/sneklogin.png)
+
+### player registration
+![registration screen](images/snekregister.png)
+
+### cozy gameplay
+![gameplay](images/snekgame.png)
+
+### hall of fame
+![leaderboard](images/snekhof.png)
+
+## setup
+
+1. **clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   ```
+
+2. **configure environment variables**
+   create a `.env` file in the root directory with your supabase/postgres credentials (make sure there are no trailing spaces or quotes!):
    ```env
    DB_URL=jdbc:postgresql://your-host:6543/postgres
    DB_USER=your-user
    DB_PASSWORD=your-password
+   ```
+
+3. **run the application**
+   start the app by running the `SnekApplication`
