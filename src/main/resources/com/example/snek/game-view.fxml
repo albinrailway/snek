@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox fx:id="rootBox" alignment="CENTER" style="-fx-background-color: #0F0F1B; -fx-font-family: 'Segoe UI';" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.snek.controller.GameController">
+    <HBox alignment="CENTER" style="-fx-padding: 15px; -fx-background-color: #1A1A2E; -fx-border-color: #38ef7d; -fx-border-width: 0 0 2 0;">
+        <Label fx:id="scoreLabel" text="SCORE: 0" style="-fx-font-size: 28px; -fx-font-weight: 900; -fx-text-fill: #38ef7d; -fx-effect: dropshadow(gaussian, rgba(56,239,125,0.6), 15, 0.4, 0, 0); -fx-letter-spacing: 2px;" />
+    </HBox>
+    <Canvas fx:id="gameCanvas" width="800" height="500" />
+</VBox>
