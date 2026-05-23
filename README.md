@@ -3,7 +3,7 @@
 a cozy, snake game built with **JavaFX** and **Supabase (PostgreSQL)**.
 
 ## features
-- **bubbly aesthetic**: all lowercase letters, soft pastel color palettes, and pill-shaped, fully rounded interfaces.
+- **bubbly aesthetic**: soft pastel color palettes, and pill-shaped, fully rounded interfaces.
 - **boba snek**: completely round snake segments drawn as overlapping ovals instead of classic retro blocks.
 - **secure auth**: sha-256 password hashing with safe local session state control.
 - **hall of fame**: real-time database pooler integration to track and render top player scores instantly.
@@ -13,6 +13,9 @@ a cozy, snake game built with **JavaFX** and **Supabase (PostgreSQL)**.
 - **ui framework**: javafx
 - **database**: supabase (postgresql)
 - **build tool**: maven
+
+## gameplay
+![gameplay](images/snekgp.gif)
 
 ## screenshots
 
